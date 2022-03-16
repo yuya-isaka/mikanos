@@ -126,9 +126,13 @@ EFI_STATUS EFIAPI UefiMain(
   GetMemoryMap(&memmap);
 
   EFI_FILE_PROTOCOL* root_dir;
+  // ポインタのポインタを渡す
   OpenRootDir(image_handle, &root_dir);
 
   EFI_FILE_PROTOCOL* memmap_file;
+  // ポインタのポインタを渡す
+  // ポインタ変数自体を変えたい時
+  // 返り値がもう使われているから，引数経由で，ポインタ変数を渡すことで内部で変換できるようにしている
   root_dir->Open(
       root_dir, &memmap_file, L"\\memmap",
       EFI_FILE_MODE_READ | EFI_FILE_MODE_WRITE | EFI_FILE_MODE_CREATE, 0);
