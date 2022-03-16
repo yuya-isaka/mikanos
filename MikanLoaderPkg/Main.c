@@ -133,6 +133,7 @@ EFI_STATUS EFIAPI UefiMain(
   // ポインタのポインタを渡す
   // ポインタ変数自体を変えたい時
   // 返り値がもう使われているから，引数経由で，ポインタ変数を渡すことで内部で変換できるようにしている
+  //
   root_dir->Open(
       root_dir, &memmap_file, L"\\memmap",
       EFI_FILE_MODE_READ | EFI_FILE_MODE_WRITE | EFI_FILE_MODE_CREATE, 0);
